@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Aura Scan Protal</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static',filename='css/landing-page.css') }}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{ url_for('static',filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav" >
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header" >
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/index">Aura Scan Portal</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse row" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right  ">
+                  <li>
+                      <a href="#home">Home</a>
+                  </li>
+                  <li>
+                      <a href="#services">Our Services</a>
+                  </li>
+                  <li>
+                      <a href="#about">About</a>
+                  </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <a name="home"></a>
+    <!-- Header -->
+    <div class="intro-header" style="min-height:100%">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1>Aura Scan Portal</h1>
+                       
+			{% if request.path == "/analyse_aura/" %}
+                          <h3>Analyse Your Aura</h3>
+                        {% elif request.path == "/predict_aura/" %}
+                          <h3>Get Your Meditation Status Predicted By Our Machine Learning Model</h3>
+                        {%endif%}
+			
+			<hr class="intro-divider">
+			<div class="container" style="width:50%">
+                        	<form id="fileUploadForm" {% if request.path == "/analyse_aura/" %}
+                                                                action="{{url_for('upload_file',type="analysis")}}"
+                                                    {% elif request.path == "/predict_aura/" %}
+                                                              action="{{url_for('upload_file',type="predict")}}"
+                                                    {%endif%}
+                                                             enctype="multipart/form-data" method="post">
+                            <fieldset>
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="row">
+                                        <label class="control-label col-lg-3 " for="filename"><span>Aura Report <br>(in .xlsx or xls)</span></label>
+                                        <div class="col-md-08" >
+                                            <div class="input-group" >
+                                                <!-- <input type="hidden" id="filename" name="filename" value=""> -->
+                                                <input type="file" id="uploadedFile" name="uploadedFile" class="form-control form-control-sm" accept="application/msexcel, .xlsx , .xls" style="border-radius:5px;margin-right:4px">
+                                                <div class="input-group-btn">
+                                                    <input type="submit" value="Upload" class="rounded-0 btn btn-primary" style="border-radius:5px;margin-left:4px">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                      </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+
+     <!-- Footer -->
+     <footer class="site-footer">
+       <div class="container">
+         <div class="row">
+
+
+
+
+           <div class="col-md-8 col-sm-6 col-xs-12">
+             <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved</p>
+           </div>
+
+           <div class="col-md-4 col-sm-6 col-xs-12">
+             <ul class="social-icons">
+               <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+               <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+               <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+               <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+             </ul>
+           </div>
+         </div>
+       </div>
+     </footer>
+
+    <!-- jQuery -->
+    <script src="{{url_for('static',filename='js/jquery.js')}}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+
+</body>
+
+</html>
