@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Aura Scan Protal</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static',filename='css/landing-page.css') }}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{ url_for('static',filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/index">Aura Scan Portal</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse row" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right  ">
+                  <li>
+                      <a href="#home">Home</a>
+                  </li>
+                  <li>
+                      <a href="#services">Our Services</a>
+                  </li>
+                  <li>
+                      <a href="#about">About</a>
+                  </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <!-- Header -->
+
+        <div class="container">
+            <div class="intro-message " style="padding-top:8%;padding-bottom:2%">
+                <h1>Aura Report Analaysis</h1>
+                <hr class="intro-divider" style="width:100%">
+            </div>
+        </div>
+
+    <!-- /.intro-header -->
+
+    <!-- Page Content -->
+
+    <!-- Personal Info -->
+    <div class="content-section-a">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <div class="clearfix"></div>
+                    <h3 class="section-heading text-muted" >Personal Information</h3>
+                    <div class="container " style="padding:0px">
+
+                      <dl class="row">
+                          <dt class="col-sm-3 text-uppercase">Name</dt>
+                          <dd class="col-sm-9 "><p>{{ user }}</p></dd>
+                          <dt class="col-sm-3 text-uppercase">Gender</dt>
+                          <dd class="col-sm-9 "><p>Male</p></dd>
+                          <dt class="col-sm-3 text-uppercase">Age</dt>
+                          <dd class="col-sm-9 "><p>99</p></dd>
+                      </dl>
+
+                    </div>
+
+                </div>
+              </div>
+
+        </div>
+        <!-- /.container -->
+      </div>
+
+    <!-- Report Values  -->
+    <div class="content-section-b">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <div class="clearfix"></div>
+                    <h3 class="section-heading text-muted" >Report Values</h3>
+                    <div class="container  " style="padding:0px">
+                      <dl class="row">
+                          <dt class="col-sm-3 text-uppercase">Energy Balance</dt>
+                          <dd class="col-sm-9 "><p>95 J</p></dd>
+                          <dt class="col-sm-3 text-uppercase">Emotional Pressure</dt>
+                          <dd class="col-sm-9 "><p>43 J</p></dd>
+                          <dt class="col-sm-3 text-uppercase">Health Status</dt>
+                          <dd class="col-sm-9 "><p>9</p></dd>
+                      </dl>
+
+                    </div>
+                </div>
+              </div>
+
+        </div>
+      </div>
+
+    <!-- Graphical Analysis -->
+    <div class="content-section-a">
+
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-5 col-sm-6">
+                  <div class="clearfix"></div>
+                  <h3 class="section-heading text-muted" >Graphical Analysis</h3>
+                  <div class="container " >
+
+                    <!-- GRAPHS GO HERE  -->
+                    <dl class="row">
+
+                        <dt class="col-lg text-uppercase">Chakra Analysis</dt> <br>
+                        <dd class="col-lg ">
+                          <img src="" alt="">
+                        </dd> <br>
+
+                        <dt class="col-lg text-uppercase">Yin Yang Analysis</dt> <br>
+                        <dd class="col-lg ">
+                          <img src="" alt="">
+                        </dd> <br>
+
+                        <dt class="col-lg text-uppercase">More Analaysis</dt> <br>
+                        <dd class="col-lg ">
+                          <img src="" alt="">
+                        </dd>
+
+                    </dl>
+
+                  </div>
+              </div>
+            </div>
+
+      </div>
+    </div>
+
+     <!-- Footer -->
+     <footer class="site-footer">
+       <div class="container">
+         <div class="row">
+
+
+
+
+           <div class="col-md-8 col-sm-6 col-xs-12">
+             <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved</p>
+           </div>
+
+           <div class="col-md-4 col-sm-6 col-xs-12">
+             <ul class="social-icons">
+               <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+               <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+               <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+               <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+             </ul>
+           </div>
+         </div>
+       </div>
+     </footer>
+
+    <!-- jQuery -->
+    <script src="{{url_for('static',filename='js/jquery.js')}}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+
+</body>
+
+</html>

@@ -1,11 +1,11 @@
 from flask import Flask,render_template,flash, request, redirect, url_for
-import os
+import os,Scripts as sc
 
 app = Flask(__name__)
-UPLOAD_FOLDER = '/var/www/AuraSite/Uploads'  
+UPLOAD_FOLDER = '/home/jatin/Aura-Project/AuraSite/Uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-#Function For Checking Utilising the same page for upload of analysis and prediction files
+#Function For Utilising the same page for upload of analysis and prediction files
 def check_type_upload(type,name):
     if type == "analysis":
         return redirect(url_for('analysis_report',name=name))
@@ -14,12 +14,18 @@ def check_type_upload(type,name):
     else:
         return "Not a valid request"
 
+
+# Flow of website : Homepage --> Upload Page (either analysis/prediction or comparison) --> Result/Report Pages
+
+
 #Home Page
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template("index.html")
 
+
+#Upload Pages
 #Upload Page For Analysis & Predictions
 @app.route('/predict_aura/')
 @app.route('/analyse_aura/')
@@ -33,21 +39,20 @@ def compare():
 
 
 #Report/Result Pages
-
 #Analysis Result Page
 @app.route('/analysis_report/<name>')
 def analysis_report(name):
-    return "Analysis Report for "+name+" has been generated"
+    return render_template("analysis_report.html",user=sc.analysis.analyse(name))
 
 #Comparison Result Page
 @app.route('/comparison_report/<id1>/<id2>')
 def comparison_report(id1,id2):
-    return "Comparison Report for "+id1+" & "+id2+" has been generated"
+    return render_template("comparison_report.html",result=sc.comparison.compare(id1,id2))
 
 #Prediction Result Page
 @app.route('/prediction_report/<name>')
 def prediction_report(name):
-    return "Predicition Report for "+name+" has been generated"
+    return render_template("prediction_report.html",prediction=sc.prediction.predict(name))
 
 #Upload Utility For Files
 @app.route('/uploader/<type>', methods = ['GET', 'POST'])
@@ -65,5 +70,7 @@ def upload_file(type):
    else:
        return 'file upload unsuccessfull'
 
+
+#Execution of app
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
