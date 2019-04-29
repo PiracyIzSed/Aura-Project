@@ -89,11 +89,9 @@
 
                       <dl class="row">
                           <dt class="col-sm-3 text-uppercase">Name</dt>
-                          <dd class="col-sm-9 "><p>{{ user }}</p></dd>
-                          <dt class="col-sm-3 text-uppercase">Gender</dt>
-                          <dd class="col-sm-9 "><p>Male</p></dd>
-                          <dt class="col-sm-3 text-uppercase">Age</dt>
-                          <dd class="col-sm-9 "><p>99</p></dd>
+                          <dd class="col-sm-9 "><p>{{ user[0] }}</p></dd>
+                          <dt class="col-sm-3 text-uppercase">Report-Date</dt>
+                          <dd class="col-sm-9 "><p>{{ user[1] }}</p></dd>
                       </dl>
 
                     </div>
@@ -115,12 +113,18 @@
                     <h3 class="section-heading text-muted" >Report Values</h3>
                     <div class="container  " style="padding:0px">
                       <dl class="row">
-                          <dt class="col-sm-3 text-uppercase">Energy Balance</dt>
-                          <dd class="col-sm-9 "><p>95 J</p></dd>
                           <dt class="col-sm-3 text-uppercase">Emotional Pressure</dt>
-                          <dd class="col-sm-9 "><p>43 J</p></dd>
-                          <dt class="col-sm-3 text-uppercase">Health Status</dt>
-                          <dd class="col-sm-9 "><p>9</p></dd>
+                          <dd class="col-sm-9 "><p>{{ user[2] }}</p></dd>
+                          <dt class="col-sm-3 text-uppercase">Energy Balance</dt>
+                          <dd class="col-sm-9 "><p>{{ user[3] }} J</p></dd>
+                          <dt class="col-sm-3 text-uppercase">L/R Symmetry</dt>
+                          <dd class="col-sm-9 "><p>{{ user[4] }}</p></dd>
+                          <dt class="col-sm-3 text-uppercase">Organ Balance</dt>
+                          <dd class="col-sm-9 "><p>{{ user[5] }}</p></dd>
+                          <dt class="col-sm-3 text-uppercase">Entropy</dt>
+                          <dd class="col-sm-9 "><p>{{ user[6] }}</p></dd>
+                          <dt class="col-sm-3 text-uppercase">Form</dt>
+                          <dd class="col-sm-9 "><p>{{ user[7] }}</p></dd>
                       </dl>
 
                     </div>
@@ -143,19 +147,19 @@
                     <!-- GRAPHS GO HERE  -->
                     <dl class="row">
 
-                        <dt class="col-lg text-uppercase">Chakra Analysis</dt> <br>
+                        <dt class="col-lg text-uppercase">Chakra_Values Analysis</dt> <br>
                         <dd class="col-lg ">
-                          <img src="" alt="">
+                          <img src="{{ user[8] }}" alt="">
+                        </dd> <br>
+
+                        <dt class="col-lg text-uppercase">Chakra_Asymmetry Analysis</dt> <br>
+                        <dd class="col-lg ">
+                          <img src="{{ user[9] }}" alt="">
                         </dd> <br>
 
                         <dt class="col-lg text-uppercase">Yin Yang Analysis</dt> <br>
                         <dd class="col-lg ">
-                          <img src="" alt="">
-                        </dd> <br>
-
-                        <dt class="col-lg text-uppercase">More Analaysis</dt> <br>
-                        <dd class="col-lg ">
-                          <img src="" alt="">
+                          <img src="{{ user[10] }}" alt="">
                         </dd>
 
                     </dl>

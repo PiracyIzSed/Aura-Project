@@ -109,7 +109,7 @@ def predict(name):
 	train_columns=[]
 	
 	# for non_meditators
-	for i in range(5,11):
+	for i in range(5,11):				# range for the non_meditation is 5 to 56
 		row=[]
 		for j in range(4,99):
 			row.append(sheet.cell(row=i, column=j).value)
@@ -118,7 +118,7 @@ def predict(name):
 	
 	
 	# for meditators
-	for i in range(5,22):
+	for i in range(5,22):				#  range for meditator is 5 to 24
 		row=[]
 		for j in range(4,99):
 			row.append(sheet.cell(row=i, column=j).value)
