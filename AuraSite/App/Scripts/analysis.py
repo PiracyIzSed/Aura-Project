@@ -109,15 +109,18 @@ def analyse(report):
 	plt.title('Values')
 	plt.xlabel('chakras')
 	plt.ylabel('values')
+
+	# allocating the colors to the each chakra
+	chakra_color=['red', 'orange', 'yellow', 'green', 'azure', 'blue', 'violet']
 	
-	bars = plt.bar( x1, values, 0.6, color='blue')
+	bars = plt.bar( x1, values, 0.6, color=chakra_color)
 	for bar in bars:
 		y_val = bar.get_height()
 		plt.text(bar.get_x() + 0.1, y_val + 0.1, y_val)
 	
-	plt.axis([-1,7,0,7])
+	plt.axis([-1,7,0,8])
 	figure = plt.gcf()
-	figure.set_size_inches(10,8)
+	figure.set_size_inches(10,6)
 	plt.savefig('../App/static/analysis_img/chakra_values.png')
 	final_result.append('../static/analysis_img/chakra_values.png')
 	
@@ -154,14 +157,26 @@ def analyse(report):
 	plt.xlabel('parameters')
 	plt.ylabel('Energy')
 
-	bars = plt.bar( ["Heart", "Lungs", "Liver", "Spleen", "Kidneys", "Pericardium", "Small intestine", "Intestine", "Gallbladder" ], yin_yang_values, 0.4, color='blue')
+	# allocating different colors to the bar
+	#print(yin_yang_values)
+	yin_yang_color=[]
+	for i in yin_yang_values:
+		if(i<4.0):
+			yin_yang_color.append('orange')
+		elif(i>6.0):
+			yin_yang_color.append('red')
+		else:
+			yin_yang_color.append('green')
+	#print(yin_yang_color)
+
+	bars = plt.bar( ["Heart", "Lungs", "Liver", "Spleen", "Kidneys", "Pericardium", "Small intestine", "Intestine", "Gallbladder" ], yin_yang_values, 0.4, color=yin_yang_color)
 	for bar in bars:
 		y_val = bar.get_height()
 		plt.text(bar.get_x() + 0.05, y_val + 0.1, y_val)
 
-	plt.axis([-0.3,8.3,0,7])
+	plt.axis([-0.3,8.3,0,8])
 	figure = plt.gcf()
-	figure.set_size_inches(11,8)
+	figure.set_size_inches(11,6)
 	plt.savefig('../App/static/analysis_img/yin_yang_values.png')
 	final_result.append('../static/analysis_img/yin_yang_values.png')
 	
@@ -169,5 +184,5 @@ def analyse(report):
 	
 	
 	
-	return final_result                     #return a user's attriutes as a dictionary with KV pairs of info and urls of the image of the graphs
+	return final_result
 
