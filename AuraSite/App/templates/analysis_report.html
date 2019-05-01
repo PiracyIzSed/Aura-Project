@@ -65,12 +65,13 @@
 
 
     <!-- Header -->
-
-        <div class="container">
-            <div class="intro-message " style="padding-top:8%;padding-bottom:2%">
-                <h1>Aura Report Analaysis</h1>
-                <hr class="intro-divider" style="width:100%">
-            </div>
+        <div class="container-fluid" style="background-color:#eeeee0">
+          <div class="container">
+              <div class="intro-message " style="padding-top:8%;padding-bottom:2%">
+                  <h1>Aura Report Analaysis</h1>
+                  <hr class="intro-divider" style="width:100%">
+              </div>
+          </div>
         </div>
 
     <!-- /.intro-header -->
@@ -104,7 +105,7 @@
       </div>
 
     <!-- Report Values  -->
-    <div class="content-section-b">
+    <div class="content-section-b" style="background-color:#eeeee0">
 
         <div class="container">
             <div class="row">
@@ -114,13 +115,31 @@
                     <div class="container  " style="padding:0px">
                       <dl class="row">
                           <dt class="col-sm-3 text-uppercase">Emotional Pressure</dt>
-                          <dd class="col-sm-9 "><p>{{ user[2] }}</p></dd>
-                          <dt class="col-sm-3 text-uppercase">Energy Balance</dt>
-                          <dd class="col-sm-9 "><p>{{ user[3] }} J</p></dd>
+                          <dd class="col-sm-9 "
+                          {% if ( user[2] >= 0 and user[2]<3) %} style="color: green"
+                          {% elif ( user[2] >= 3 and user[2]<6) %}style="color: orange"
+                          {% elif ( user[2] >= 6 and user[2]<10) %}style="color: red"{% endif %}
+                            ><p>{{ user[2] }}</p></dd>
+                          <dt class="col-sm-3 text-uppercase">Energy</dt>
+                         <dd class="col-sm-9 "
+                            {% if ( user[3] >= 0 and user[3]<40) %} style="color: green"
+                           {% elif ( user[3] >= 40 and user[3]<70) %}style="color: orange"
+                           {% elif ( user[3] >= 70 and user[3]<100) %}style="color: red"{% endif %}
+                           ><p>{{ user[3] }} Joules</p></dd>
+
                           <dt class="col-sm-3 text-uppercase">L/R Symmetry</dt>
-                          <dd class="col-sm-9 "><p>{{ user[4] }}</p></dd>
+                          <dd class="col-sm-9 "
+                          {% if ( user[4] >= 0 and user[4]<50) %} style="color: red"
+                          {% elif ( user[4] >= 50 and user[4]<90) %}style="color: orange"
+                          {% elif ( user[4] >= 90 and user[4]<100) %}style="color: green"{% endif %}
+                          ><p>{{ user[4] }} %</p></dd>
+
                           <dt class="col-sm-3 text-uppercase">Organ Balance</dt>
-                          <dd class="col-sm-9 "><p>{{ user[5] }}</p></dd>
+                          <dd class="col-sm-9 "
+                            {% if ( user[5] >= 0 and user[5]<40) %} style="color: red"
+                            {% elif ( user[5] >= 40 and user[5]<70) %}style="color: orange"
+                            {% elif ( user[5] >= 70 and user[5]<100) %}style="color: green"{% endif %}
+                            ><p>{{ user[5] }} %</p></dd>
                           <dt class="col-sm-3 text-uppercase">Entropy</dt>
                           <dd class="col-sm-9 "><p>{{ user[6] }}</p></dd>
                           <dt class="col-sm-3 text-uppercase">Form</dt>
@@ -147,20 +166,22 @@
                     <!-- GRAPHS GO HERE  -->
                     <dl class="row">
 
-                        <dt class="col-lg text-uppercase">Chakra_Values Analysis</dt> <br>
+                        <dt class="col-lg text-uppercase">Chakra Analysis</dt> <br>
                         <dd class="col-lg ">
-                          <img src="{{ user[8] }}" alt="">
+                          <img class="img-responsive" src="{{url_for('static',filename='analysis_img/chakra_values_'+user[0]+'.png')}}" alt="">
                         </dd> <br>
 
-                        <dt class="col-lg text-uppercase">Chakra_Asymmetry Analysis</dt> <br>
+                        <!-- <dt class="col-lg text-uppercase">Chakra_Asymmetry Analysis</dt> <br> -->
                         <dd class="col-lg ">
-                          <img src="{{ user[9] }}" alt="">
+                          <img src="{{url_for('static',filename='analysis_img/chakra_asymmetry_'+user[0]+'.png')}}" alt="">
                         </dd> <br>
+                        <div class="container"  >
+                          <dt class="col-lg text-uppercase">Yin Yang Analysis</dt> <br>
+                          <dd class="col-lg ">
+                            <img class="img-responsive"src="{{url_for('static',filename='analysis_img/yin_yang_values_'+user[0]+'.png')}}" alt="">
+                          </dd>
 
-                        <dt class="col-lg text-uppercase">Yin Yang Analysis</dt> <br>
-                        <dd class="col-lg ">
-                          <img src="{{ user[10] }}" alt="">
-                        </dd>
+                        </div>
 
                     </dl>
 
@@ -171,6 +192,32 @@
       </div>
     </div>
 
+    <!-- Rating  -->
+
+    <div class="content-section-a" style="background-color:#eeeee0">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <div class="clearfix"></div>
+                    <h3 class="section-heading text-muted" >Overall Health Analysis</h3>
+                    <div class="container " style="padding:0px">
+
+                      <dl class="row">
+                          <dt class="col-sm-3 text-uppercase">Name</dt>
+                          <dd class="col-sm-9 "><p>{{ user[0] }}</p></dd>
+                          <dt class="col-sm-3 text-uppercase">Report-Date</dt>
+                          <dd class="col-sm-9 "><p>{{ user[1] }}</p></dd>
+                      </dl>
+
+                    </div>
+
+                </div>
+              </div>
+
+        </div>
+        <!-- /.container -->
+      </div>
      <!-- Footer -->
      <footer class="site-footer">
        <div class="container">

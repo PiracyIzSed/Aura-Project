@@ -10,8 +10,9 @@ import openpyxl
 
 def analyse(report):
 
-	file_path = "/home/jatin/Aura-Project/AuraSite/App/Uploads/" + str(report)
-	file_upload = open(file_path,'rb') 		# open the file in new data object and then load into the function
+	file_path = "/home/jatin/Aura-Project/AuraSite/App/"
+	file_upload = open(file_path+'Uploads/'+str(report),'rb') 		# open the file in new data object and then load into the function
+	graph_save = file_path+"static/analysis_img/"
 	book = openpyxl.load_workbook(filename=file_upload)
 	sheet_name11 = book.get_sheet_names()[0]		# data_type = string
 
@@ -121,9 +122,9 @@ def analyse(report):
 	plt.axis([-1,7,0,8])
 	figure = plt.gcf()
 	figure.set_size_inches(10,6)
-	plt.savefig('/home/jatin/Aura-Project/AuraSite/App/static/analysis_img/chakra_values.png')
-	final_result.append('/home/jatin/Aura-Project/AuraSite/App/static/analysis_img/chakra_values.png')
-
+	plt.savefig(graph_save+'chakra_values_'+final_result[0]+'.png')
+	final_result.append(graph_save+'chakra_values_'+final_result[0]+'.png')
+	plt.clf()
 	# plotting the second graph
 
 	plt.figure(2)
@@ -145,10 +146,10 @@ def analyse(report):
 	plt.axis([-2,2,-1,7])
 	#plt.show()
 	figure = plt.gcf()
-	figure.set_size_inches(11,8)
-	plt.savefig('/home/jatin/Aura-Project/AuraSite/App/static/analysis_img/chakra_asymmetry.png')
-	final_result.append('/home/jatin/Aura-Project/AuraSite/App/static/analysis_img/chakra_asymmetry.png')
-
+	figure.set_size_inches(11,6)
+	plt.savefig(graph_save+'chakra_asymmetry_'+final_result[0]+'.png')
+	final_result.append(graph_save+'chakra_asymmetry_'+final_result[0]+'.png')
+	plt.clf()
 
 	# plotting the third graph
 
@@ -177,9 +178,9 @@ def analyse(report):
 	plt.axis([-0.3,8.3,0,8])
 	figure = plt.gcf()
 	figure.set_size_inches(11,6)
-	plt.savefig('/home/jatin/Aura-Project/AuraSite/App/static/analysis_img/yin_yang_values.png')
-	final_result.append('/home/jatin/Aura-Project/AuraSite/App/static/analysis_img/yin_yang_values.png')
-
+	plt.savefig(graph_save+'yin_yang_values_'+final_result[0]+'.png')
+	final_result.append(graph_save+'yin_yang_values_'+final_result[0]+'.png')
+	plt.clf()
 
 
 
