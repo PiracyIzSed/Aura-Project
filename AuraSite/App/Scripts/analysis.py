@@ -112,7 +112,7 @@ def analyse(report):
 	plt.ylabel('values')
 
 	# allocating the colors to the each chakra
-	chakra_color=['red', 'orange', 'yellow', 'green', 'azure', 'blue', 'violet']
+	chakra_color=['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
 
 	bars = plt.bar( x1, values, 0.6, color=chakra_color)
 	for bar in bars:
@@ -193,11 +193,11 @@ def analyse(report):
 		rating = rating + 1
 	if(organ >=70 and organ<= 100):
 		rating = rating + 1
-	for i in chakra_values:
-		if (i[1] >= 5 and i[1] <= 7):
+	for i in chakra_values1:
+		if (i[1] >= 5.0 and i[1] <= 7.0):
 			rating = rating + 1
 	for i in yin_values1:
-		if (i[1] >= 4 and i[1] <=6):
+		if (i[1] >= 4.0 and i[1] <=6.0):
 			rating = rating +1
 	print(rating)
 
@@ -212,19 +212,19 @@ def analyse(report):
 	plt.ylabel('values')
 	
 	normal_color=[]
-	if(i<4.0):
+	if(normalized_rating<4.0):
 		normal_color.append('red')
-	elif(i>=4 and i<=7):
+	elif(normalized_rating>=4 and normalized_rating<=7):
 		normal_color.append('orange')
 	else:
 		normal_color.append('green')
 
-	bars = plt.barh( ['A'], normalized_rating, 0.6, color=normal_color)
+	bars = plt.barh( ['A'], normalized_rating, 0.3, color=normal_color)
 	for bar in bars:
 		y_val = bar.get_height()
 		plt.text(bar.get_x() + 0.1, y_val + 0.1, y_val)
 
-	plt.axis([0,10,0,1])
+	plt.axis([0,10,-0.5,0.5])
 	figure = plt.gcf()
 	figure.set_size_inches(10,6)
 	plt.savefig(graph_save+'rating_values_'+final_result[0]+'.png')
