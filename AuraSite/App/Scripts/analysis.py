@@ -182,7 +182,55 @@ def analyse(report):
 	final_result.append(graph_save+'yin_yang_values_'+final_result[0]+'.png')
 	plt.clf()
 
+	#-----------------------------------------------------------------
+	# normalized score
+	rating =0
+	if(emotional_pressure >=2 and emotional_pressure<= 3):
+		rating = rating + 1
+	if(energy >=40 and energy<= 70):
+		rating = rating + 1
+	if(symmetry >=90 and symmetry<= 100):
+		rating = rating + 1
+	if(organ >=70 and organ<= 100):
+		rating = rating + 1
+	for i in chakra_values:
+		if (i[1] >= 5 and i[1] <= 7):
+			rating = rating + 1
+	for i in yin_values1:
+		if (i[1] >= 4 and i[1] <=6):
+			rating = rating +1
+	print(rating)
 
+	normalized_rating = (rating/20)*10
+	final_result.append(normalized_rating)
+	# plotting graph
+
+
+	plt.figure(4)
+	plt.title('Values')
+	plt.xlabel('chakras')
+	plt.ylabel('values')
+	
+	normal_color=[]
+	if(i<4.0):
+		normal_color.append('red')
+	elif(i>=4 and i<=7):
+		normal_color.append('orange')
+	else:
+		normal_color.append('green')
+
+	bars = plt.barh( ['A'], normalized_rating, 0.6, color=normal_color)
+	for bar in bars:
+		y_val = bar.get_height()
+		plt.text(bar.get_x() + 0.1, y_val + 0.1, y_val)
+
+	plt.axis([0,10,0,1])
+	figure = plt.gcf()
+	figure.set_size_inches(10,6)
+	plt.savefig(graph_save+'rating_values_'+final_result[0]+'.png')
+	final_result.append(graph_save+'rating_values_'+final_result[0]+'.png')
+	plt.clf()
+	
 
 
 	return final_result
