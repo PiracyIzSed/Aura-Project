@@ -10,7 +10,7 @@ import openpyxl
 
 def analyse(report):
 
-	file_path = "/home/jatin/Aura-Project/AuraSite/App/"
+	file_path = "/home/pranav/Desktop/Aura-Project/AuraSite/App/"
 	file_upload = open(file_path+'Uploads/'+str(report),'rb') 		# open the file in new data object and then load into the function
 	graph_save = file_path+"static/analysis_img/"
 	book = openpyxl.load_workbook(filename=file_upload)
@@ -68,6 +68,13 @@ def analyse(report):
 	#print(form)								#float											# IMP
 	final_result.append(form)
 
+	yinn = data_frame.iloc[53,2]
+	#print(yin)								#float											# IMP
+	final_result.append(yinn)
+
+	yangg = data_frame.iloc[54,2]
+	#print(yangg)								#float											# IMP
+	final_result.append(yangg)
 
 	#--------------------------------------------------------------------------------------------------------------
 
@@ -187,15 +194,20 @@ def analyse(report):
 	rating =0
 	if(emotional_pressure >=2 and emotional_pressure<= 3):
 		rating = rating + 1
+	print(rating)
 	if(energy >=40 and energy<= 70):
 		rating = rating + 1
+	print(rating)
 	if(symmetry >=90 and symmetry<= 100):
 		rating = rating + 1
+	print(rating)
 	if(organ >=70 and organ<= 100):
 		rating = rating + 1
+	print(rating)
 	for i in chakra_values1:
 		if (i[1] >= 5.0 and i[1] <= 7.0):
 			rating = rating + 1
+	print(rating)
 	for i in yin_values1:
 		if (i[1] >= 4.0 and i[1] <=6.0):
 			rating = rating +1
@@ -211,6 +223,10 @@ def analyse(report):
 	plt.xlabel('chakras')
 	plt.ylabel('values')
 
+	plt.title('Rating')
+	plt.xlabel('')
+	plt.ylabel('value')
+	
 	normal_color=[]
 	if(normalized_rating<4.0):
 		normal_color.append('red')
@@ -219,14 +235,14 @@ def analyse(report):
 	else:
 		normal_color.append('green')
 
-	bars = plt.barh( ['A'], normalized_rating, 0.3, color=normal_color)
+	bars = plt.bar( [''], normalized_rating, 0.3, color=normal_color)
 	for bar in bars:
 		y_val = bar.get_height()
-		plt.text(bar.get_x() + 0.1, y_val + 0.1, y_val)
+		plt.text(bar.get_x() + 0.07, y_val + 0.1, y_val)
 
-	plt.axis([0,10,-0.5,0.5])
+	plt.axis([-1,1,0,10])
 	figure = plt.gcf()
-	figure.set_size_inches(10,6)
+	figure.set_size_inches(3,6)
 	plt.savefig(graph_save+'rating_values_'+final_result[0]+'.png')
 	final_result.append(graph_save+'rating_values_'+final_result[0]+'.png')
 	plt.clf()

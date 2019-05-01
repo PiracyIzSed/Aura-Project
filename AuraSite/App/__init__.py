@@ -5,7 +5,7 @@ from flask import Flask,render_template,flash, request, redirect, url_for
 import os,Scripts as sc
 
 app = Flask(__name__)
-UPLOAD_FOLDER = '/home/jatin/Aura-Project/AuraSite/App/Uploads/'
+UPLOAD_FOLDER = '/home/pranav/Desktop/Aura-Project/AuraSite/App/Uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 #Function For Utilising the same page for upload of analysis and prediction files
