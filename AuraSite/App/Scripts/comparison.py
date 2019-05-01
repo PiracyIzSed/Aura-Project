@@ -96,6 +96,8 @@ def compare(file1,file2):
 	plt.clf()
 
 
+	graph1_path='/home/priyank/Desktop/Aura-Project/AuraSite/App/static/comparision_img/general_graph.png'
+
 	#FORMATION CHAKRA GRAPH ----
 	#CREATING PLOT ARGUMENTS
 	N = 7
@@ -117,6 +119,38 @@ def compare(file1,file2):
 	graph.autoscale_view()
 
 	plt.savefig('/home/priyank/Desktop/Aura-Project/AuraSite/App/static/comparision_img/chakra_graph.png')		#CHANGE PATH
+	graph2_path='/home/priyank/Desktop/Aura-Project/AuraSite/App/static/comparision_img/chakra_graph.png'
+
+	graph_path=[graph1_path,graph2_path]
+
+	return graph_path
+	'''
+	#NEW UPDATED REQUIREMENT
+	#FOR FILE1
+	general_file1_part1 = data1.iloc[2:8,1:3]
+	general_file1_part2 = data1.iloc[53:55,1:3]
+	general_list1_part1 = general_file1_part1.values.tolist()
+	general_list1_part2 = general_file1_part2.values.tolist()
+
+	general_list1_part1.append(general_list1_part2)
+	finalval_file1=general_list1_part1
+
+	#print(data)
+	#print(finalval_file1)
+
+	#FOR FILE2
+	general_file2_part1 = data2.iloc[2:8,1:3]
+	general_file2_part2 = data2.iloc[53:55,1:3]
+	general_list2_part1 = general_file2_part1.values.tolist()
+	general_list2_part2 = general_file2_part2.values.tolist()
+
+	general_list2_part1.append(general_list2_part2)
+	finalval_file2=general_list2_part1
+
+	#print(data)
+	#print(finalval_file2)
+
+	return finalval_file1,finalval_file2
 
 
 
@@ -200,3 +234,4 @@ def compare(file1,file2):
 		file2_dict['L/R Symmetry']='Normal'
 
 	return file1_dict,file2_dict
+	'''
