@@ -50,7 +50,7 @@ def analysis_report(name):
 #Comparison Result Page
 @app.route('/comparison_report/<id1>/<id2>')
 def comparison_report(id1,id2):
-    return render_template("comparison_report.html",result=sc.comparison.compare(id1,id2))
+    return render_template("comparison_report.html",user1=sc.analysis.analyse(id1),user2=sc.analysis.analyse(id2),graphs=sc.comparison.compare(id1,id2))
 
 #Prediction Result Page
 @app.route('/prediction_report/<name>')

@@ -3,6 +3,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import gridspec
 import openpyxl
 import numpy as np
 
@@ -12,16 +13,17 @@ def compare(file1,file2):
 	file_ideal = '/home/jatin/Aura-Project/AuraSite/App/Data/ideal_mukesh.xlsx'		#CHANGE PATH
 	file1='/home/jatin/Aura-Project/AuraSite/App/Uploads/'+file1				#CHANGE PATH
 	file2='/home/jatin/Aura-Project/AuraSite/App/Uploads/'+file2				#CHANGE PATH
-
+	file1=open(file1,'rb')
+	file2=open(file2,'rb')
 	#READING BOOK AND SHEET NAME
 	book = openpyxl.load_workbook(file_ideal)
 	name = book.get_sheet_names()[0]
 
 	book1 = openpyxl.load_workbook(file1)
-	name1 = book.get_sheet_names()[0]
+	name1 = book1.get_sheet_names()[0]
 
 	book2 = openpyxl.load_workbook(file2)
-	name2 = book.get_sheet_names()[0]
+	name2 = book2.get_sheet_names()[0]
 
 	#FEATCHING COMPLETE SHEET DATA
 	data = pd.read_excel(file_ideal, sheet_name=name)
@@ -78,25 +80,27 @@ def compare(file1,file2):
 	width = 0.2
 
 	#CREATING SUB-POLTS
-	graph = plt.subplot(111)
+	fig = plt.figure(figsize=(10,6))
+	gs = gridspec.GridSpec(1, 1)
+	graph = plt.subplot(gs[0])
 	p1 = graph.bar( ind-width, y_axis_file1, width=0.2, color='b', align='center')
 	p2 = graph.bar( ind      , y_axis_ideal, width=0.2, color='g', align='center')
 	p3 = graph.bar( ind+width, y_axis_file2, width=0.2, color='r', align='center')
 
 	#PLOT ATTRIBUTES
-	graph.set_title('Comaparitive Analysis')
+	graph.set_title('Comparitive Analysis')
 
 	graph.set_xticks(ind + (width/999) / 2)
 	graph.set_xticklabels(x_axis_ideal)
 
-	graph.legend((p1[0], p2[0], p3[0]), ('File1', 'Ideal', 'File2'))
+	graph.legend((p1[0], p2[0], p3[0]), ('User 1', 'Ideal', 'User 2'))
 	graph.autoscale_view()
 
-	plt.savefig('/home/priyank/Desktop/Aura-Project/AuraSite/App/static/comparision_img/general_graph.png')		#CHANGE PATH
+	plt.savefig('/home/jatin/Aura-Project/AuraSite/App/static/comparison_img/general_graph.png')		#CHANGE PATH
 	plt.clf()
 
 
-	graph1_path='/home/priyank/Desktop/Aura-Project/AuraSite/App/static/comparision_img/general_graph.png'
+	graph1_path='/home/jatin/Aura-Project/AuraSite/App/static/comparison_img/general_graph.png'
 
 	#FORMATION CHAKRA GRAPH ----
 	#CREATING PLOT ARGUMENTS
@@ -105,7 +109,7 @@ def compare(file1,file2):
 	width = 0.3
 
 	#CREATING SUB-POLTS
-	graph = plt.subplot(111)
+	graph = plt.subplot(gs[0])
 	g1 = graph.bar( ind      , y_chakra_file1, width=0.3, color='b', align='center')
 	g2 = graph.bar( ind+width, y_chakra_file2, width=0.3, color='g', align='center')
 
@@ -114,12 +118,11 @@ def compare(file1,file2):
 
 	graph.set_xticks(ind + width / 2)
 	graph.set_xticklabels(x_chakra,rotation=20)
-
-	graph.legend((g1[0], g2[0]), ('File1', 'File2'))
+	graph.legend((g1[0], g2[0]), ('User 1', 'User 2'))
 	graph.autoscale_view()
 
-	plt.savefig('/home/priyank/Desktop/Aura-Project/AuraSite/App/static/comparision_img/chakra_graph.png')		#CHANGE PATH
-	graph2_path='/home/priyank/Desktop/Aura-Project/AuraSite/App/static/comparision_img/chakra_graph.png'
+	plt.savefig('/home/jatin/Aura-Project/AuraSite/App/static/comparison_img/chakra_graph.png')		#CHANGE PATH
+	graph2_path='/home/jatin/Aura-Project/AuraSite/App/static/comparison_img/chakra_graph.png'
 
 	graph_path=[graph1_path,graph2_path]
 

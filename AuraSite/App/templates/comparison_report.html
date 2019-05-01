@@ -48,13 +48,13 @@
             <div class="collapse navbar-collapse row" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right  ">
                   <li>
-                      <a href="#home">Home</a>
+                      <a href="/">Home</a>
                   </li>
                   <li>
-                      <a href="#services">Our Services</a>
+                      <a href="/">Our Services</a>
                   </li>
                   <li>
-                      <a href="#about">About</a>
+                      <a href="/">About</a>
                   </li>
                 </ul>
             </div>
@@ -68,7 +68,7 @@
         <div class="container-fluid" style="background-color:#eeeee0">
           <div class="container">
               <div class="intro-message " style="padding-top:8%;padding-bottom:2%">
-                  <h1>Aura Report Analaysis</h1>
+                  <h1>Comparison Report</h1>
                   <hr class="intro-divider" style="width:100%">
               </div>
           </div>
@@ -89,12 +89,13 @@
                     <div class="container " style="padding:0px">
 
                       <dl class="row">
-                          <dt class="col-sm-3 text-uppercase">Name</dt>
-                          <dd class="col-sm-3 "><p>{{ user[0] }}</p></dd>
-                          <dd class="col-sm-3 "><p>{{ user[0] }}</p></dd>
+                          <dt class="col-sm-4 text-uppercase">Name</dt>
+                          <dd class="col-sm-4 "><p>{{ user1[0] }}</p></dd>
+                          <dd class="col-sm-4 "><p>{{ user2[0] }}</p></dd>
 
-                          <dt class="col-sm-3 text-uppercase">Report-Date</dt>
-                          <dd class="col-sm-9 "><p>{{ user[1] }}</p></dd>
+                          <dt class="col-sm-4 text-uppercase">Report-Date</dt>
+                          <dd class="col-sm-4 "><p>{{ user1[1] }}</p></dd>
+                          <dd class="col-sm-4 "><p>{{ user2[1] }}</p></dd>
                       </dl>
 
                     </div>
@@ -116,40 +117,69 @@
                     <h3 class="section-heading text-muted" >Report Values</h3>
                     <div class="container  " style="padding:0px">
                       <dl class="row">
-                          <dt class="col-sm-3 text-uppercase">Emotional Pressure</dt>
-                          <dd class="col-sm-9 "
-                          {% if ( user[2] >= 0 and user[2]<3) %} style="color: green"
-                          {% elif ( user[2] >= 3 and user[2]<6) %}style="color: orange"
-                          {% elif ( user[2] >= 6 and user[2]<10) %}style="color: red"{% endif %}
-                            ><p>{{ user[2] }}</p></dd>
-                          <dt class="col-sm-3 text-uppercase">Energy</dt>
-                         <dd class="col-sm-9 "
-                            {% if ( user[3] >= 0 and user[3]<40) %} style="color: green"
-                           {% elif ( user[3] >= 40 and user[3]<70) %}style="color: orange"
-                           {% elif ( user[3] >= 70 and user[3]<100) %}style="color: red"{% endif %}
-                           ><p>{{ user[3] }} Joules</p></dd>
+                          <dt class="col-sm-4 text-uppercase">Emotional Pressure</dt>
+                          <dd class="col-sm-4 "
+                          {% if ( user1[2] >= 0 and user1[2]<3) %} style="color: green"
+                          {% elif ( user1[2] >= 3 and user1[2]<6) %}style="color: orange"
+                          {% elif ( user1[2] >= 6 and user1[2]<10) %}style="color: red"{% endif %}
+                            ><p>{{ user1[2] }}</p></dd>
+                            <dd class="col-sm-4 "
+                            {% if ( user2[2] >= 0 and user2[2]<3) %} style="color: green"
+                            {% elif ( user2[2] >= 3 and user2[2]<6) %}style="color: orange"
+                            {% elif ( user2[2] >= 6 and user2[2]<10) %}style="color: red"{% endif %}
+                              ><p>{{ user2[2] }}</p></dd>
 
-                          <dt class="col-sm-3 text-uppercase">L/R Symmetry</dt>
-                          <dd class="col-sm-9 "
-                          {% if ( user[4] >= 0 and user[4]<50) %} style="color: red"
-                          {% elif ( user[4] >= 50 and user[4]<90) %}style="color: orange"
-                          {% elif ( user[4] >= 90 and user[4]<100) %}style="color: green"{% endif %}
-                          ><p>{{ user[4] }} %</p></dd>
+                          <dt class="col-sm-4 text-uppercase">Energy</dt>
+                         <dd class="col-sm-4 "
+                            {% if ( user1[3] >= 0 and user1[3]<40) %} style="color: green"
+                           {% elif ( user1[3] >= 40 and user1[3]<70) %}style="color: orange"
+                           {% elif ( user1[3] >= 70 and user1[3]<100) %}style="color: red"{% endif %}
+                           ><p>{{ user1[3] }} Joules</p></dd>
+                           <dd class="col-sm-4 "
+                              {% if ( user2[3] >= 0 and user2[3]<40) %} style="color: green"
+                             {% elif ( user2[3] >= 40 and user2[3]<70) %}style="color: orange"
+                             {% elif ( user2[3] >= 70 and user2[3]<100) %}style="color: red"{% endif %}
+                             ><p>{{ user2[3] }} Joules</p></dd>
 
-                          <dt class="col-sm-3 text-uppercase">Organ Balance</dt>
-                          <dd class="col-sm-9 "
-                            {% if ( user[5] >= 0 and user[5]<40) %} style="color: red"
-                            {% elif ( user[5] >= 40 and user[5]<70) %}style="color: orange"
-                            {% elif ( user[5] >= 70 and user[5]<100) %}style="color: green"{% endif %}
-                            ><p>{{ user[5] }} %</p></dd>
-                          <dt class="col-sm-3 text-uppercase">Entropy Coefficient</dt>
-                          <dd class="col-sm-9 "><p>{{ user[6] }}</p></dd>
-                          <dt class="col-sm-3 text-uppercase">Form Coefficient</dt>
-                          <dd class="col-sm-9 "><p>{{ user[7] }}</p></dd>
-                          <dt class="col-sm-3 text-uppercase">Yin</dt>
-                          <dd class="col-sm-9 "><p>{{ user[8] }}</p></dd>
-                          <dt class="col-sm-3 text-uppercase">Yang</dt>
-                          <dd class="col-sm-9 "><p>{{ user[9] }}</p></dd>
+                          <dt class="col-sm-4 text-uppercase">L/R Symmetry</dt>
+                          <dd class="col-sm-4 "
+                          {% if ( user1[4] >= 0 and user1[4]<50) %} style="color: red"
+                          {% elif ( user1[4] >= 50 and user1[4]<90) %}style="color: orange"
+                          {% elif ( user1[4] >= 90 and user1[4]<100) %}style="color: green"{% endif %}
+                          ><p>{{ user1[4] }} %</p></dd>
+                          <dd class="col-sm-4 "
+                          {% if ( user2[4] >= 0 and user2[4]<50) %} style="color: red"
+                          {% elif ( user2[4] >= 50 and user2[4]<90) %}style="color: orange"
+                          {% elif ( user2[4] >= 90 and user2[4]<100) %}style="color: green"{% endif %}
+                          ><p>{{ user2[4] }} %</p></dd>
+
+                          <dt class="col-sm-4 text-uppercase">Organ Balance</dt>
+                          <dd class="col-sm-4 "
+                            {% if ( user1[5] >= 0 and user1[5]<40) %} style="color: red"
+                            {% elif ( user1[5] >= 40 and user1[5]<70) %}style="color: orange"
+                            {% elif ( user1[5] >= 70 and user1[5]<100) %}style="color: green"{% endif %}
+                            ><p>{{ user1[5] }} %</p></dd>
+                            <dd class="col-sm-4 "
+                              {% if ( user2[5] >= 0 and user2[5]<40) %} style="color: red"
+                              {% elif ( user2[5] >= 40 and user2[5]<70) %}style="color: orange"
+                              {% elif ( user2[5] >= 70 and user2[5]<100) %}style="color: green"{% endif %}
+                              ><p>{{ user2[5] }} %</p></dd>
+
+                          <dt class="col-sm-4 text-uppercase">Entropy Coefficient</dt>
+                          <dd class="col-sm-4 "><p>{{ user1[6] }}</p></dd>
+                          <dd class="col-sm-4 "><p>{{ user2[6] }}</p></dd>
+
+                          <dt class="col-sm-4 text-uppercase">Form Coefficient</dt>
+                          <dd class="col-sm-4 "><p>{{ user1[7] }}</p></dd>
+                          <dd class="col-sm-4 "><p>{{ user2[7] }}</p></dd>
+
+                          <dt class="col-sm-4 text-uppercase">Yin</dt>
+                          <dd class="col-sm-4 "><p>{{ user1[8] }}</p></dd>
+                          <dd class="col-sm-4 "><p>{{ user2[8] }}</p></dd>
+
+                          <dt class="col-sm-4 text-uppercase">Yang</dt>
+                          <dd class="col-sm-4 "><p>{{ user1[9] }}</p></dd>
+                          <dd class="col-sm-4 "><p>{{ user2[9] }}</p></dd>
                       </dl>
 
                     </div>
@@ -171,23 +201,14 @@
 
                     <!-- GRAPHS GO HERE  -->
                     <dl class="row">
-
+                      <!-- Chakra Analysis  -->
                         <dt class="col-lg text-uppercase">Chakra Analysis</dt> <br>
                         <dd class="col-lg ">
-                          <img class="img-responsive" src="{{url_for('static',filename='analysis_img/chakra_values_'+user[0]+'.png')}}" alt="">
+
+                          <img src="{{url_for('static',filename='comparison_img/chakra_graph.png')}}" alt="">
                         </dd> <br>
 
-                        <!-- <dt class="col-lg text-uppercase">Chakra_Asymmetry Analysis</dt> <br> -->
-                        <dd class="col-lg ">
-                          <img src="{{url_for('static',filename='analysis_img/chakra_asymmetry_'+user[0]+'.png')}}" alt="">
-                        </dd> <br>
-                        <div class="container"  >
-                          <dt class="col-lg text-uppercase">Yin Yang Analysis</dt> <br>
-                          <dd class="col-lg ">
-                            <img class="img-responsive"src="{{url_for('static',filename='analysis_img/yin_yang_values_'+user[0]+'.png')}}" alt="">
-                          </dd>
-
-                        </div>
+                        <!-- General Analysis -->
 
                     </dl>
 
@@ -210,27 +231,28 @@
                     <div class="container " style="padding:0px">
 
                       <dl class="row">
-                          <dt class="col-sm-3 text-uppercase">Rating</dt>
-                          <dd class="col-sm-9 " {% if ( user[13] >= 0 and user[13]<=5) %} style="color: red"
-                         {% elif ( user[13] > 5 and user[13]<=7) %}style="color: orange"
-                         {% elif ( user[13] > 7 and user[13]<=10) %}style="color: green"
-                         {% endif %} ><p>{{ user[13] }}</p></dd>
-                          <dt class="col-sm-3 text-uppercase">Scale</dt>
-                          <dd class="col-sm-9 ">
+                          <dt class="col-sm-4 text-uppercase">Rating</dt>
+                          <dd class="col-sm-4 " {% if ( user1[13] >= 0 and user1[13]<=5) %} style="color: red"
+                         {% elif ( user1[13] > 5 and user1[13]<=7) %}style="color: orange"
+                         {% elif ( user1[13] > 7 and user1[13]<=10) %}style="color: green"
+                         {% endif %} ><p>{{ user1[13] }}</p></dd>
+                         <dd class="col-sm-4 " {% if ( user2[13] >= 0 and user2[13]<=5) %} style="color: red"
+                        {% elif ( user2[13] > 5 and user2[13]<=7) %}style="color: orange"
+                        {% elif ( user2[13] > 7 and user2[13]<=10) %}style="color: green"
+                        {% endif %} ><p>{{ user2[13] }}</p></dd>
+
+                          <dt class="col-sm-4 text-uppercase">Scale</dt>
+                          <dd class="col-sm-4 ">
                             <div  style="padding-top:2%;padding-bottom:2%;">
-                               <img  src="{{url_for('static',filename='analysis_img/rating_values_'+user[0]+'.png')}}" alt="">
+                              <img class="img-responsive"src="{{url_for('static',filename='analysis_img/rating_values_'+user1[0]+'.png')}}" alt="">
                             </div>
                         </dd>
+                        <dd class="col-sm-4 ">
+                          <div  style="padding-top:2%;padding-bottom:2%;">
+                            <img class="img-responsive"src="{{url_for('static',filename='analysis_img/rating_values_'+user2[0]+'.png')}}" alt="">
+                          </div>
+                      </dd>
                         <br>
-                        <dt class="col-sm-3 text-uppercase">Remarks</dt>
-                        <dd class="col-sm-9 ">{% if ( user[13] >= 0 and user[13]<=5) %}
-                            <p>Your Health condition is Concerning. Please Consult a Doctor.</p>
-                       {% elif ( user[13] > 5 and user[13]<=7) %}
-                          <p>Your Health condition is Average. Please take good care of yourself.</p>
-                       {% elif ( user[13] > 7 and user[13]<=10) %}
-                          <p>Your Health condition is Good.</p>
-                       {% endif %}
-                     </dd>
                       </dl>
 
                     </div>

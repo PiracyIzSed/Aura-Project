@@ -48,13 +48,13 @@
             <div class="collapse navbar-collapse row" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right  ">
                   <li>
-                      <a href="#home">Home</a>
+                      <a href="/">Home</a>
                   </li>
                   <li>
-                      <a href="#services">Our Services</a>
+                      <a href="/">Our Services</a>
                   </li>
                   <li>
-                      <a href="#about">About</a>
+                      <a href="/">About</a>
                   </li>
                 </ul>
             </div>
@@ -72,13 +72,13 @@
                 <div class="col-lg-12">
                     <div class="intro-message">
                         <h1>Aura Scan Portal</h1>
-                       
+
 			{% if request.path == "/analyse_aura/" %}
                           <h3>Analyse Your Aura</h3>
                         {% elif request.path == "/predict_aura/" %}
                           <h3>Get Your Meditation Status Predicted By Our Machine Learning Model</h3>
                         {%endif%}
-			
+
 			<hr class="intro-divider">
 			<div class="container" style="width:50%">
                         	<form id="fileUploadForm" {% if request.path == "/analyse_aura/" %}
