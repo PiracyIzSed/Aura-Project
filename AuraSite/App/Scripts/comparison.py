@@ -118,8 +118,34 @@ def compare(file1,file2):
 	
 	plt.savefig('/home/priyank/Desktop/Aura-Project/AuraSite/App/static/comparision_img/chakra_graph.png')		#CHANGE PATH
 	
+	#NEW UPDATED REQUIREMENT
+	#FOR FILE1
+	general_file1_part1 = data1.iloc[2:8,1:3]
+	general_file1_part2 = data1.iloc[53:55,1:3]
+	general_list1_part1 = general_file1_part1.values.tolist()
+	general_list1_part2 = general_file1_part2.values.tolist()
 	
+	general_list1_part1.append(general_list1_part2)
+	finalval_file1=general_list1_part1
 	
+	#print(data)
+	#print(finalval_file1)
+	
+	#FOR FILE2
+	general_file2_part1 = data2.iloc[2:8,1:3]
+	general_file2_part2 = data2.iloc[53:55,1:3]
+	general_list2_part1 = general_file2_part1.values.tolist()
+	general_list2_part2 = general_file2_part2.values.tolist()
+	
+	general_list2_part1.append(general_list2_part2)
+	finalval_file2=general_list2_part1
+	
+	#print(data)
+	#print(finalval_file2)
+	
+	return finalval_file1,finalval_file2
+
+	'''
 	#COMPARING RESULTS WITH IDEAL
 	ideal_values = data.iloc[2:5,1:3]
 	ideal_list = ideal_values.values.tolist()
@@ -200,4 +226,5 @@ def compare(file1,file2):
 		file2_dict['L/R Symmetry']='Normal'
 	
 	return file1_dict,file2_dict
-	
+	'''
+
