@@ -111,7 +111,7 @@ def compare(file1,file2):
 	graph.set_title('Chakra Analysis')
 	
 	graph.set_xticks(ind + width / 2)
-	graph.set_xticklabels(x_chakra)
+	graph.set_xticklabels(x_chakra,rotation=20)
 	
 	graph.legend((g1[0], g2[0]), ('File1', 'File2'))
 	graph.autoscale_view()
