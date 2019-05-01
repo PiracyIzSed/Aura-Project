@@ -208,10 +208,27 @@
                     <div class="container " style="padding:0px">
 
                       <dl class="row">
-                          <dt class="col-sm-3 text-uppercase">Name</dt>
-                          <dd class="col-sm-9 "><p>{{ user[11] }}</p></dd>
-                          <dt class="col-sm-3 text-uppercase">Report-Date</dt>
-                          <img class="img-responsive"src="{{url_for('static',filename='analysis_img/rating_values_'+user[0]+'.png')}}" alt="">
+                          <dt class="col-sm-3 text-uppercase">Rating</dt>
+                          <dd class="col-sm-9 " {% if ( user[13] >= 0 and user[13]<=5) %} style="color: red"
+                         {% elif ( user[13] > 5 and user[13]<=7) %}style="color: orange"
+                         {% elif ( user[13] > 7 and user[13]<=10) %}style="color: green"
+                         {% endif %} ><p>{{ user[13] }}</p></dd>
+                          <dt class="col-sm-3 text-uppercase">Scale</dt>
+                          <dd class="col-sm-9 ">
+                            <div  style="padding-top:2%;padding-bottom:2%;">
+                               <img  src="{{url_for('static',filename='analysis_img/rating_values_'+user[0]+'.png')}}" alt="">
+                            </div>
+                        </dd>
+                        <br>
+                        <dt class="col-sm-3 text-uppercase">Remarks</dt>
+                        <dd class="col-sm-9 ">{% if ( user[13] >= 0 and user[13]<=5) %}
+                            <p>Your Health condition is Concerning. Please Consult a Doctor.</p>
+                       {% elif ( user[13] > 5 and user[13]<=7) %}
+                          <p>Your Health condition is Average. Please take good care of yourself.</p>
+                       {% elif ( user[13] > 7 and user[13]<=10) %}
+                          <p>Your Health condition is Good.</p>
+                       {% endif %}
+                     </dd>
                       </dl>
 
                     </div>

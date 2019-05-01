@@ -10,7 +10,7 @@ import openpyxl
 
 def analyse(report):
 
-	file_path = "/home/pranav/Desktop/Aura-Project/AuraSite/App/"
+	file_path = "/home/jatin/Aura-Project/AuraSite/App/"
 	file_upload = open(file_path+'Uploads/'+str(report),'rb') 		# open the file in new data object and then load into the function
 	graph_save = file_path+"static/analysis_img/"
 	book = openpyxl.load_workbook(filename=file_upload)
@@ -223,10 +223,10 @@ def analyse(report):
 	plt.xlabel('chakras')
 	plt.ylabel('values')
 
-	plt.title('Rating')
-	plt.xlabel('')
-	plt.ylabel('value')
-	
+	plt.title('')
+	plt.xlabel('Rating')
+	plt.ylabel('')
+
 	normal_color=[]
 	if(normalized_rating<4.0):
 		normal_color.append('red')
@@ -235,14 +235,13 @@ def analyse(report):
 	else:
 		normal_color.append('green')
 
-	bars = plt.bar( [''], normalized_rating, 0.3, color=normal_color)
-	for bar in bars:
-		y_val = bar.get_height()
-		plt.text(bar.get_x() + 0.07, y_val + 0.1, y_val)
-
-	plt.axis([-1,1,0,10])
+	bars = plt.barh( [0], normalized_rating,[1], color=normal_color)
+	plt.yticks([])
+	plt.axis([0,10,0,0.25])
 	figure = plt.gcf()
-	figure.set_size_inches(3,6)
+	figure.set_size_inches(6,0.75)
+
+	plt.tight_layout(pad=0.4)
 	plt.savefig(graph_save+'rating_values_'+final_result[0]+'.png')
 	final_result.append(graph_save+'rating_values_'+final_result[0]+'.png')
 	plt.clf()
