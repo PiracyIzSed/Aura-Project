@@ -92,7 +92,7 @@ def compare(file1,file2):
 	graph.legend((p1[0], p2[0], p3[0]), ('File1', 'Ideal', 'File2'))
 	graph.autoscale_view()
 	
-	plt.savefig('/home/priyank/Desktop/Aura-Project/AuraSite/App/static/img/general_graph.png')		#CHANGE PATH
+	plt.savefig('/home/priyank/Desktop/Aura-Project/AuraSite/App/static/comparision_img/general_graph.png')		#CHANGE PATH
 	plt.clf()
 	
 	
@@ -116,7 +116,7 @@ def compare(file1,file2):
 	graph.legend((g1[0], g2[0]), ('File1', 'File2'))
 	graph.autoscale_view()
 	
-	plt.savefig('/home/priyank/Desktop/Aura-Project/AuraSite/App/static/img/chakra_graph.png')		#CHANGE PATH
+	plt.savefig('/home/priyank/Desktop/Aura-Project/AuraSite/App/static/comparision_img/chakra_graph.png')		#CHANGE PATH
 	
 	
 	
