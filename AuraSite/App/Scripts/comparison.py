@@ -94,7 +94,7 @@ def compare(file1,file2):
 	
 	plt.savefig('/home/priyank/Desktop/Aura-Project/AuraSite/App/static/comparision_img/general_graph.png')		#CHANGE PATH
 	plt.clf()
-	
+	graph1_path='/home/priyank/Desktop/Aura-Project/AuraSite/App/static/comparision_img/general_graph.png'
 	
 	#FORMATION CHAKRA GRAPH ----
 	#CREATING PLOT ARGUMENTS
@@ -117,7 +117,12 @@ def compare(file1,file2):
 	graph.autoscale_view()
 	
 	plt.savefig('/home/priyank/Desktop/Aura-Project/AuraSite/App/static/comparision_img/chakra_graph.png')		#CHANGE PATH
+	graph2_path='/home/priyank/Desktop/Aura-Project/AuraSite/App/static/comparision_img/chakra_graph.png'
 	
+	graph_path=[graph1_path,graph2_path]
+	
+	return graph_path
+	'''
 	#NEW UPDATED REQUIREMENT
 	#FOR FILE1
 	general_file1_part1 = data1.iloc[2:8,1:3]
@@ -145,7 +150,7 @@ def compare(file1,file2):
 	
 	return finalval_file1,finalval_file2
 
-	'''
+	
 	#COMPARING RESULTS WITH IDEAL
 	ideal_values = data.iloc[2:5,1:3]
 	ideal_list = ideal_values.values.tolist()
