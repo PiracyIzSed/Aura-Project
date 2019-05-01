@@ -119,7 +119,7 @@ def analyse(report):
 		y_val = bar.get_height()
 		plt.text(bar.get_x() + 0.1, y_val + 0.1, y_val)
 
-	plt.axis([-1,7,0,8])
+	plt.axis([-1,7,0,10])
 	figure = plt.gcf()
 	figure.set_size_inches(10,6)
 	plt.savefig(graph_save+'chakra_values_'+final_result[0]+'.png')
@@ -175,7 +175,7 @@ def analyse(report):
 		y_val = bar.get_height()
 		plt.text(bar.get_x() + 0.05, y_val + 0.1, y_val)
 
-	plt.axis([-0.3,8.3,0,8])
+	plt.axis([-0.3,8.3,0,10])
 	figure = plt.gcf()
 	figure.set_size_inches(11,6)
 	plt.savefig(graph_save+'yin_yang_values_'+final_result[0]+'.png')
@@ -210,7 +210,7 @@ def analyse(report):
 	plt.title('Values')
 	plt.xlabel('chakras')
 	plt.ylabel('values')
-	
+
 	normal_color=[]
 	if(normalized_rating<4.0):
 		normal_color.append('red')
@@ -230,7 +230,7 @@ def analyse(report):
 	plt.savefig(graph_save+'rating_values_'+final_result[0]+'.png')
 	final_result.append(graph_save+'rating_values_'+final_result[0]+'.png')
 	plt.clf()
-	
+
 
 
 	return final_result

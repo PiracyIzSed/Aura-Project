@@ -8,28 +8,37 @@ from sklearn import tree
 from sklearn.metrics import accuracy_score
 
 def predict(name):
-	
-	file_path = "../App/Uploads/" + str(name)
-	file_upload = open(file_path,'rb') 		# open the file in new data object and then load into the function
+
+	file_path = "/home/jatin/Aura-Project/AuraSite/App/"
+	file_upload = open(file_path+'Uploads/'+ str(name),'rb') 		# open the file in new data object and then load into the function
 	book3 = openpyxl.load_workbook(filename=file_upload)
 	sheet_name = book3.get_sheet_names()[0]
+
 	sheet3 = book3.get_sheet_by_name(sheet_name)
+	data_frame = pd.read_excel(file_upload,sheet_name = sheet_name)
+	title = data_frame.columns.values[2]
+	temp_names = title.split()
+
+	person_name=""
+	for i in range(3,len(temp_names)):
+		person_name = person_name + str(temp_names[i]) + " "
+
 	for i in range(4,125):
 		for j in range(3,4):
 			if( not sheet3.cell(row =i, column=j).value ):
 				sheet3.cell(row =i, column=j).value = 0
 			#print(sheet3.cell(row =i, column=j).value)
-	
-	book3.save('../App/Data/newwww.xlsx')
-	df = pd.read_excel('../App/Data/newwww.xlsx')
+
+	book3.save(file_path+'Data/newwww.xlsx')
+	df = pd.read_excel(file_path+'/Data/newwww.xlsx')
 
 
 	selected_part = df.iloc[75:77,1:3]
 	#print(selected_part.values.tolist())
 	sele = selected_part.values.tolist()
-	
-	
-	
+
+
+
 	if(sele[0][0]=='Thyroid gland'):
 		#print(True)
 		part1 = df.iloc[1:8,0:3]
@@ -48,9 +57,9 @@ def predict(name):
 		#print(part2.values.tolist())
 		#part2 = df.iloc[77:123,0:3]
 		p3 = pd.concat([part1,part2,part3,part4,part6,part7,part8,part9,part10,part11,part12,part13,part14])
-		p3.T.to_excel('../App/Data/second.xlsx')
-	
-		book_temp = openpyxl.load_workbook('../App/Data/second.xlsx')
+		p3.T.to_excel(file_path+'Data/second.xlsx')
+
+		book_temp = openpyxl.load_workbook(file_path+'Data/second.xlsx')
 		#print(book.get_sheet_names())
 		sheet = book_temp.get_sheet_by_name('Sheet1')
 		for i in range(4,5):
@@ -59,7 +68,7 @@ def predict(name):
 				#print(sheet.cell(row=i, column=j).value)
 	else:
 		#print(False)
-	
+
 		part1 = df.iloc[1:8,0:3]
 		part2 = df.iloc[11:13,0:3]
 		part3 = df.iloc[14:16,0:3]
@@ -76,38 +85,38 @@ def predict(name):
 		#print(part2.values.tolist())
 		#part2 = df.iloc[77:123,0:3]
 		p3 = pd.concat([part1,part2,part3,part4,part6,part7,part8,part9,part10,part11,part12,part13,part14])
-		p3.T.to_excel('../App/Data/second.xlsx')
-	
-		book_temp = openpyxl.load_workbook('../App/Data/second.xlsx')
+		p3.T.to_excel(file_path+'Data/second.xlsx')
+
+		book_temp = openpyxl.load_workbook(file_path+'Data/second.xlsx')
 		#print(book.get_sheet_names())
 		sheet = book_temp.get_sheet_by_name('Sheet1')
 	'''
 		for i in range(4,5):
 			for j in range(3,98):
 				print(sheet.cell(row=i, column=j).value)
-	'''	
+	'''
 
 
-	file = "../App/Data/non_meditator_data.xlsx"	
+	file = file_path+"Data/non_meditator_data.xlsx"
 	book = openpyxl.load_workbook(file)
 	#print(book.get_sheet_names())
 	sheet = book.get_sheet_by_name('Sheet1')
-	
-	file1 = "../App/Data/meditator_data.xlsx"
+
+	file1 = file_path+'Data/meditator_data.xlsx'
 	book1 = openpyxl.load_workbook(file1)
 	#print(book.get_sheet_names())
 	sheet1 = book1.get_sheet_by_name('Sheet1')
-	
-	file2 = "../App/Data/second.xlsx"
+
+	file2 = file_path+"Data/second.xlsx"
 	book2 = openpyxl.load_workbook(file2)
 	#print(book.get_sheet_names())
 	sheet2 = book2.get_sheet_by_name('Sheet1')
-	
-	
+
+
 	# for training data
 	train_rows=[]
 	train_columns=[]
-	
+
 	# for non_meditators
 	for i in range(5,11):				# range for the non_meditation is 5 to 56
 		row=[]
@@ -115,8 +124,8 @@ def predict(name):
 			row.append(sheet.cell(row=i, column=j).value)
 		train_rows.append(row)
 		train_columns.append(sheet.cell(row=i, column=2).value)
-	
-	
+
+
 	# for meditators
 	for i in range(5,22):				#  range for meditator is 5 to 24
 		row=[]
@@ -124,29 +133,27 @@ def predict(name):
 			row.append(sheet.cell(row=i, column=j).value)
 		train_rows.append(row)
 		train_columns.append(sheet1.cell(row=i, column=2).value)
-	
+
 	# for testing
-	
+
 	test_rows=[]
 	test_columns=[]
-	
+
 	for i in range(4,5):
 		row=[]
 		for j in range(3,98):
 			row.append(sheet2.cell(row=i, column=j).value)
 		test_rows.append(row)
-	
+
 	#print(test_rows)
 	# Decision tree
 	algo = tree.DecisionTreeClassifier()
 	trained = algo.fit(X = train_rows,y = train_columns)
 	result = trained.predict(test_rows)
 	int_result = int(result[0])
-	
+
 	#return the result as boolean (True for meditator , False for non meditator)
 	if (int_result):
-		return True
+		return {"name":person_name,"status":True}
 	else:
-		return False
-
-
+		return {"name":person_name,"status":False}

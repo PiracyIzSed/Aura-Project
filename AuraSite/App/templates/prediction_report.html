@@ -1,10 +1,144 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
+<html lang="en">
+
+<head>
+
     <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    {{ prediction }}
-  </body>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Aura Scan Protal</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static',filename='css/landing-page.css') }}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{ url_for('static',filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/index">Aura Scan Portal</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse row" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right  ">
+                  <li>
+                      <a href="#home">Home</a>
+                  </li>
+                  <li>
+                      <a href="#services">Our Services</a>
+                  </li>
+                  <li>
+                      <a href="#about">About</a>
+                  </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <!-- Header -->
+        <div class="container-fluid" style="background-color:#eeeee0">
+          <div class="container">
+              <div class="intro-message " style="padding-top:8%;padding-bottom:2%">
+                  <h1>Prediction Report</h1>
+                  <hr class="intro-divider" style="width:100%">
+              </div>
+          </div>
+        </div>
+
+    <!-- /.intro-header -->
+
+    <!-- Page Content -->
+
+    <!-- Personal Info -->
+    <div class="content-section-a" style="min-height: 65%">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <div class="clearfix"></div>
+                    <h3 class="section-heading text-muted" >Report Results</h3>
+                    <div class="container " style="padding:0px">
+                      {%if prediction.status == "True" %}
+                      <h4>Great {{prediction.name}} !!!</h4>
+                      <h4>Our model predicted you as a meditator. This means your general health is on track.</h4>
+                      <h4>Keep up the good work and stay healthy.</h4> <br> <br>
+                      <img class="img-responsive" src="{{ url_for('static',filename='img/meditator.jpeg')}}" alt="">
+                       {%else %}
+                       <h4>The results dont look very great for you {{prediction.name}} !!!</h4>
+                       <h4>You need to pay more attention to your physical and mental health .</h4>
+                       <h4>But do not worry, it is never too late. We have just the right thing you need. Here are a few tips to kickstart your journey towards a self confident and healthy indivdual.</h4>
+                      <br> <br>  <img class="img-responsive" src="{{ url_for('static',filename='img/non-meditator.png')}}" alt="">
+                       {%endif%}
+
+                    </div>
+
+                </div>
+              </div>
+
+        </div>
+        <!-- /.container -->
+      </div>
+
+
+     <!-- Footer -->
+     <footer class="site-footer">
+       <div class="container">
+         <div class="row">
+
+
+
+
+           <div class="col-md-8 col-sm-6 col-xs-12">
+             <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved</p>
+           </div>
+
+           <div class="col-md-4 col-sm-6 col-xs-12">
+             <ul class="social-icons">
+               <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+               <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+               <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+               <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+             </ul>
+           </div>
+         </div>
+       </div>
+     </footer>
+
+    <!-- jQuery -->
+    <script src="{{url_for('static',filename='js/jquery.js')}}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+
+</body>
+
 </html>
